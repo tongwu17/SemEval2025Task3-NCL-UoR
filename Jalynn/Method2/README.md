@@ -10,11 +10,20 @@ Jalynn/
 |      |-- exknowledge_m2/
 |      |-- m2_translated_keywords
 |      |__ detect_gpt_m2/
+|  |-- test/
+|      |-- detect_gpt_m2/
+|      |__ detect_gpt4o_m2/
 |--src/
 |  |-- keyphrases_extraction.ipynb
 |  |-- obtain_external_knowledge.ipynb
 |  |-- scorer.py
+|  |-- semeval25_t3_M2-GPT4o.ipynb
 |  |__ semeval25_t3_M2.ipynb
+|--huggingface/
+|  |-- models--asafaya--bert-base-arabic
+|  |-- models--FacebookAI--xlm-roberta-large-finetuned-conll03-english
+|  |-- models--HooshvareLab--bert-fa-base-uncased-ner-arman
+|  |__ models--projecte-aina--roberta-base-ca-v2-cased-ner
 |--stopwords/
 |  |-- stopwords-ar.txt
 |  |-- stopwords-eu.txt
@@ -28,9 +37,13 @@ Jalynn/
 * data/val/m2_translated_keywords/:  (.jsonl files folder) Translate the key phrases into English for further Rollback mechanism in obtaining external knowledge.
 * data/val/exknowledge_m2/: (.jsonl files folder) Wikipedia API is used to external knowledge as context.
 * data/val/detect_gpt_m2/: (.jsonl files folder) The hallucination detected results.
+* data/test/: Apply the **src** codes on the test unlabeled dataset.
+* data/test/detect_gpt_m2/: (.jsonl files folder) The hallucination detected results via **gpt-3.5-turbo**.
+* data/test/detect_gpt4o_m2/: (.jsonl files folder) The hallucination detected results via **gpt-4o**.
 * src/keyphrases_extraction.ipynb: Use rules as follow to extract the key phrases
 * src/obtain_external_knowledge.ipynb: Translate the key phrases into English, and then retrieve the external knowledge by Wikipedia API. If the original language cannot be searched, then use the translated one.
-* src/semeval25_t3_M2.ipynb: Detect hallucinations (and evaluate the val labeled dataset).
+* src/semeval25_t3_M2.ipynb: Detect hallucinations (and evaluate the val labeled dataset) via **gpt-3.5-turbo**.
+* stc/semeval25_t3_M2-GPT4o.ipynb: Detect hallucinations (and evaluate the val labeled dataset) via **gpt-4o**.
 * src/scorer.py: Evaluation code provided by organizer including compute the `hard_labels`.
 * results/evaluation_results.txt: Evaluation results between detected results and val labeled datatset, using scorer.py.2;
 
@@ -70,7 +83,7 @@ Jalynn/
 
       3. Extract the first 200 characters from the search results.
       
-3. Use (model_input, model_output_text, context) to detect hallucination words and their probabilities via GPT-3.5.
+3. Use (model_input, model_output_text, context) to detect hallucination words and their probabilities via GPT (gpt-3.5-turbo, gpt-4o).
 
 4. Merge overlapping words and compute their probabilities using Exponentiation.
 
