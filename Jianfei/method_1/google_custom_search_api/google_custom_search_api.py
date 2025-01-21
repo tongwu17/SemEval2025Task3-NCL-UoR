@@ -1,8 +1,9 @@
-import csv
+import json
 import ast
 import requests
 from goose3 import Goose
 from requests.exceptions import SSLError, RequestException
+
 
 # 定义 Google Custom Search API 的参数
 API_KEY = "AIzaSyBVZfk7xkrKW9pi2dzYjbe0nua2TQKSeJ0"  # 替换为您的 Google API 密钥
@@ -45,21 +46,13 @@ def parse_webpage(url):
 # 读取 CSV 文件并处理
 def process_csv(input_file, output_file):
     with open(input_file, mode='r', encoding='utf-8') as infile, open(output_file, mode='w', encoding='utf-8', newline='') as outfile:
-        reader = csv.DictReader(infile)
-        fieldnames = reader.fieldnames + ["google_links", "parsed_content"]  # 添加新列
-        writer = csv.DictWriter(outfile, fieldnames=fieldnames)
-        writer.writeheader()
 
-        for row in reader:
+        for line in infile:
+            row = json.loads(line)
             lang = row.get("lang")
-            keyphrase_str = row.get("keyphrase_combined")
-            if lang and keyphrase_str:
-                try:
-                    keyphrases = [kp.strip() for kp in ast.literal_eval(keyphrase_str) if kp.strip()]
-                except (ValueError, SyntaxError):
-                    print(f"Invalid keyphrase_combined format: {keyphrase_str}")
-                    keyphrases = []
+            keyphrases = row.get("keywords", [])
 
+            if lang and keyphrases:
                 links = []
                 parsed_content = []
 
@@ -73,15 +66,28 @@ def process_csv(input_file, output_file):
                             parsed_content.append(f"{title}: {text}")
 
                 row["google_links"] = links
-                row["parsed_content"] = parsed_content
+                row["parsed_content"] = "".join(parsed_content)
             else:
                 row["google_links"] = []
                 row["parsed_content"] = []
 
-            writer.writerow(row)
+            outfile.write(json.dumps(row, ensure_ascii=False) + "\n")
 
 if __name__ == '__main__':
-    input_file = 'data/combined_data_extracted.csv'
-    output_file = 'data/combined_data_with_links_and_content.csv'
+    # 'mushroom.en-tst.v1.jsonl'
+    # 'mushroom.ca-tst.v1.jsonl'
+    # 'mushroom.cs-tst.v1.jsonl'
+    # 'mushroom.de-tst.v1.jsonl'
+    # 'mushroom.es-tst.v1.jsonl'
+    # 'mushroom.eu-tst.v1.jsonl'
+    # 'mushroom.fa-tst.v1.jsonl'
+    # 'mushroom.fi-tst.v1.jsonl'
+    # 'mushroom.fr-tst.v1.jsonl'
+    # 'mushroom.hi-tst.v1.jsonl'
+    # 'mushroom.it-tst.v1.jsonl'
+    # 'mushroom.sv-tst.v1.jsonl'
+    # 'mushroom.zh-tst.v1.jsonl'
+    input_file = 'data/hong/method_1/keywords/test/mushroom.ar-tst.v1.jsonl'
+    output_file = 'data/hong/method_1/context/test/mushroom.ar-tst.v1.jsonl'
     process_csv(input_file, output_file)
     print(f"处理完成，结果已保存到 {output_file}")
