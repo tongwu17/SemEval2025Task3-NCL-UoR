@@ -74,20 +74,20 @@ def process_csv(input_file, output_file):
             outfile.write(json.dumps(row, ensure_ascii=False) + "\n")
 
 if __name__ == '__main__':
-    # 'mushroom.en-tst.v1.jsonl'
-    # 'mushroom.ca-tst.v1.jsonl'
-    # 'mushroom.cs-tst.v1.jsonl'
-    # 'mushroom.de-tst.v1.jsonl'
-    # 'mushroom.es-tst.v1.jsonl'
-    # 'mushroom.eu-tst.v1.jsonl'
-    # 'mushroom.fa-tst.v1.jsonl'
-    # 'mushroom.fi-tst.v1.jsonl'
-    # 'mushroom.fr-tst.v1.jsonl'
-    # 'mushroom.hi-tst.v1.jsonl'
-    # 'mushroom.it-tst.v1.jsonl'
-    # 'mushroom.sv-tst.v1.jsonl'
-    # 'mushroom.zh-tst.v1.jsonl'
-    input_file = 'data/hong/method_1/keywords/test/mushroom.ar-tst.v1.jsonl'
-    output_file = 'data/hong/method_1/context/test/mushroom.ar-tst.v1.jsonl'
-    process_csv(input_file, output_file)
-    print(f"处理完成，结果已保存到 {output_file}")
+    files = ['mushroom.ca-tst.v1.jsonl',
+    'mushroom.cs-tst.v1.jsonl',
+    'mushroom.de-tst.v1.jsonl',
+    'mushroom.es-tst.v1.jsonl',
+    'mushroom.eu-tst.v1.jsonl',
+    'mushroom.fa-tst.v1.jsonl',
+    'mushroom.fi-tst.v1.jsonl',
+    'mushroom.fr-tst.v1.jsonl',
+    'mushroom.hi-tst.v1.jsonl',
+    'mushroom.it-tst.v1.jsonl',
+    'mushroom.sv-tst.v1.jsonl',
+    'mushroom.zh-tst.v1.jsonl']
+    for file in files:
+        input_file = f'data/hong/method_1/keywords/test/{file}'
+        output_file = f'data/hong/method_1/context/test/{file}'
+        process_csv(input_file, output_file)
+        print(f"处理完成，结果已保存到 {output_file}")
