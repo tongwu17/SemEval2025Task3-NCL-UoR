@@ -9,7 +9,10 @@ Jalynn/
 |      |-- exknowledge_m1/
 |      |-- etract_m1/
 |      |__ detect_m1/
+|  |-- test/
+|      |-- detect_m1/
 |--src/
+|  |-- RefChecker/
 |  |-- external_knowledge_google.ipynb
 |  |-- keyphrases_extraction_gpt.ipynb
 |  |-- scorer.py
@@ -24,9 +27,10 @@ Jalynn/
 * data/val/extract_m1/: (.jsonl files folder) Extract the key phrases from `model_input` using OpenAI API , and then for the further external knowledge.
 * data/val/exknowledge_m1/：(.jsonl files folder) After key phrase extraction, Google API is used to external knowledge as context.
 * data/val/detect_m1/: (.jsonl files folder) The hallucination detected results.
+* data/test/detect_m1/: (.jsonl files folder) The hallucination detected results on **test unlabeled dataset**.
 * src/RefChecker/: https://github.com/amazon-science/RefChecker?tab=readme-ov-file 
 * src/keyphrases_extraction_gpt.ipynb: Use OpenAI API to extract key phrases.
-* src/external_knowledge_google.ipynb: Retrieve external knowledge by extracted key phrases using Google API.
+* src/external_knowledge_google.ipynb: Retrieve external knowledge by extracted key phrases using Google Custom Search Engine (Google Custom Search JSON API).
 * src/semeval25_t3.ipynb: Detect hallucinations (and evaluate the val labeled dataset).
 * src/scorer.py: Evaluation code provided by organizer including compute the `hard_labels`.
 * results/evaluation_results.txt: Evaluation results between detected results and val labeled datatset, using scorer.py.
