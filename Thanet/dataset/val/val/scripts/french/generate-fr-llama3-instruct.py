@@ -23,11 +23,11 @@ def load_model(model_name):
         device_map='auto',
         trust_remote_code=True,
         cache_dir=".hf",
-        token='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',
+        token='',
     )
     tokenizer = AutoTokenizer.from_pretrained(
         model_name,
-        token='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',
+        token='',
     )
     return model, tokenizer
 
