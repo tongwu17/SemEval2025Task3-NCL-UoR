@@ -6,8 +6,8 @@ from requests.exceptions import SSLError, RequestException
 
 
 # 定义 Google Custom Search API 的参数
-API_KEY = "AIzaSyBVZfk7xkrKW9pi2dzYjbe0nua2TQKSeJ0"  # 替换为您的 Google API 密钥
-CX = "c08cbf9c245c44720"  # 替换为您的搜索引擎 CX 值
+API_KEY = ""  # 替换为您的 Google API 密钥
+CX = ""  # 替换为您的搜索引擎 CX 值
 
 # 初始化 Goose3
 g = Goose()
