@@ -56,7 +56,7 @@ Jalynn/
          1. Chinese (zh): jieba
          2. Arabic (ar): Hugging Face (asafaya/bert-base-arabic)
          3. Hindi (hi): indic-nlp-library
-         4. Basque (eu): tokenize - xx_ent_wiki_sm, Snowball - stopwords-eu.txt
+         4. Basque (eu): tokenize - xx_ent_wiki_sm, Stopwords-iso - stopwords-eu.txt
          5. Czech (cs): stopwordsios
          6. Farsi (fa): Hazm
          7. Other Languages: spaCy model
