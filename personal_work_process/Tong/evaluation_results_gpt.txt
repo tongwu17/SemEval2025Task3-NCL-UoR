@@ -1,4 +1,0 @@
-Results for mushroom.ar-val.v2.jsonl:
-  Mean IoU: 0.18210507
-  Mean Spearman Correlation: 0.06644335
-
