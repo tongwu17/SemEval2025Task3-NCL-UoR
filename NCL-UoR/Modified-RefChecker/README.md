@@ -1,4 +1,4 @@
-# **CLAUDE-Modifier** (RefChecker Framework Enhanced by CLAUDE)
+# Modified-RefChecker
 
 **Project Folder Structure**
 

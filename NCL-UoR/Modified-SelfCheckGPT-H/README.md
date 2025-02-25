@@ -1,4 +1,4 @@
-# **SelfModify-H** (Modified SelfCheckGPT for Hallucination Detection)
+# Modified-SelfCheckGPT-H
 
 **Project Folder Structure**
 
