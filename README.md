@@ -10,7 +10,7 @@ The task resources are available at: https://github.com/Helsinki-NLP/shroom
 
 ## Citation
 
-Please consider citing our work:
+Our paper has been published in ACL (SemEval 2025). If you use this repository or find our work helpful, please consider citing:
 
 ```bibtex
 @inproceedings{hong-etal-2025-ncl,
